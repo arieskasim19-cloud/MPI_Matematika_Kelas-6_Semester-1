@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Interaktif Matematika Kelas 6 - MIN 1 Kabupaten Gorontalo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Fredoka (untuk nuansa edukatif yang ramah anak) -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tone.js untuk Efek Suara Interaktif -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        madrasah: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animasi Running Text (Marquee) */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 22s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
+        /* Animasi Mengambang Ceria untuk Ikon Anak SD/MI */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: floatSlow 3.5s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatSlow 4.2s ease-in-out 1s infinite;
+        }
+
+        /* Tombol 3D Empuk Khas Aplikasi Edukasi Premium */
+        .btn-3d-green {
+            box-shadow: 0 6px 0 #15803d, 0 12px 20px rgba(22, 163, 74, 0.3);
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-3d-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #15803d, 0 15px 25px rgba(22, 163, 74, 0.4);
+        }
+        .btn-3d-green:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #15803d, 0 5px 10px rgba(22, 163, 74, 0.2);
+        }
+
+        .btn-3d-gold {
+            box-shadow: 0 5px 0 #b45309, 0 10px 18px rgba(245, 158, 11, 0.3);
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-3d-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #b45309, 0 12px 22px rgba(245, 158, 11, 0.4);
+        }
+        .btn-3d-gold:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #b45309;
+        }
+
+        /* Kustomisasi Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0fdf4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #22c55e, #15803d);
+            border-radius: 9999px;
+        }
+
+        /* Efek Animasi Halus */
+        .fade-in {
+            animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(14px) scale(0.99); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Pola Background Mewah Bernuansa Hijau Emerald & Ornamen Bintang */
+        .bg-luxury-madrasah {
+            background-color: #ecfdf5;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(34, 197, 94, 0.16) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(250, 204, 21, 0.18) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(21, 128, 61, 0.15) 0px, transparent 50%),
+                radial-gradient(#16a34a 0.85px, transparent 0.85px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+        }
+
+        /* Bingkai Mewah Beraksen Emas */
+        .luxury-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border: 2px solid #bbf7d0;
+            box-shadow: 0 20px 35px -10px rgba(20, 83, 45, 0.12), 0 0 0 1px rgba(250, 204, 21, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-luxury-madrasah text-slate-800 min-h-screen flex flex-col font-sans antialiased selection:bg-madrasah-500 selection:text-white overflow-x-hidden">
+
+    <!-- Dekorasi Mengambang Ceria untuk Anak SD/MI (Tidak menghalangi klik) -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-45 hidden sm:block">
+        <i class="fas fa-shapes text-madrasah-300 text-4xl absolute top-28 left-8 animate-float"></i>
+        <i class="fas fa-star text-amber-300 text-3xl absolute top-40 right-10 animate-float-delayed"></i>
+        <i class="fas fa-calculator text-madrasah-300 text-4xl absolute bottom-20 left-12 animate-float-delayed"></i>
+        <i class="fas fa-award text-amber-300 text-4xl absolute bottom-24 right-12 animate-float"></i>
+    </div>
+
+    <!-- RUNNING TEXT ATAS DENGAN LATAR BIRU -->
+    <div class="bg-gradient-to-r from-blue-800 via-blue-700 to-blue-800 text-white py-2.5 px-4 shadow-lg overflow-hidden marquee-container sticky top-0 z-50 border-b-2 border-amber-400">
+        <div class="animate-marquee font-semibold text-sm sm:text-base tracking-wide flex items-center gap-4">
+            <span><i class="fas fa-star text-yellow-300 mr-2"></i>Media Pembelajaran Interaktif; Mata pelajaran Matematika, Kelas 6; MIN 1 Kabupaten Gorontalo; created by Adrianto Umar<i class="fas fa-star text-yellow-300 ml-2"></i></span>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- HALAMAN 1: TAMPILAN BERANDA (HOME VIEW)                               -->
+    <!-- ===================================================================== -->
+    <main id="home-view" class="relative z-10 flex-1 flex flex-col justify-between pt-5 sm:pt-7 px-4 sm:px-6 lg:px-8 pb-6 max-w-7xl mx-auto w-full fade-in">
+        
+        <!-- BAGIAN ATAS BERANDA: Logo Kemenag & Judul Utama -->
+        <header class="text-center luxury-card rounded-[2rem] p-5 sm:p-6 mb-6 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-madrasah-600 via-amber-400 to-madrasah-600"></div>
+            
+            <div class="flex flex-col items-center justify-center relative">
+                <div class="bg-gradient-to-b from-white to-madrasah-50 p-3 rounded-2xl border-2 border-amber-300/80 shadow-md mb-3 animate-float">
+                    <img src="https://iili.io/oKUJul2.png" 
+                         alt="Logo Kemenag / MIN 1 Kabupaten Gorontalo" 
+                         class="h-20 sm:h-24 w-auto object-contain rounded-xl"
+                         onerror="this.onerror=null; this.src='https://placehold.co/200x100/16a34a/ffffff?text=MIN+1+GORONTALO';">
+                </div>
+                <h1 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-madrasah-900 via-madrasah-700 to-madrasah-900 bg-clip-text text-transparent tracking-tight leading-tight drop-shadow-xs">
+                    MEDIA PEMBELAJARAN INTERAKTIF MATEMATIKA KELAS 6
+                </h1>
+                <div class="mt-2.5 inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-gradient-to-r from-madrasah-100 via-amber-50 to-madrasah-100 border border-amber-300 text-madrasah-900 text-xs sm:text-sm font-bold shadow-xs">
+                    <i class="fas fa-crown text-amber-500"></i>
+                    <span>MIN 1 Kabupaten Gorontalo</span>
+                    <i class="fas fa-crown text-amber-500"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- KONTEN UTAMA BERANDA: TERBAGI MENJADI DUA SISI (KIRI DAN KANAN) -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-stretch flex-1">
+            
+            <!-- SISI KIRI: Gambar Madrasah -->
+            <div class="md:col-span-6 luxury-card rounded-[2rem] relative overflow-hidden group min-h-[320px] sm:min-h-[430px] border-2 border-amber-300/70">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-madrasah-500 via-amber-400 to-madrasah-500 z-10"></div>
+                <img src="https://iili.io/oKSDYCB.md.jpg" 
+                     alt="Gambar MIN 1 Kabupaten Gorontalo" 
+                     class="w-full h-full object-cover transform group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x450/dcfce7/15803d?text=MIN+1+Kabupaten+Gorontalo';">
+                <div class="absolute inset-0 ring-1 ring-inset ring-white/40 rounded-[2rem] pointer-events-none"></div>
+            </div>
+
+            <!-- SISI KANAN: Salam Pembuka & Form Identitas Wajib Diisi -->
+            <div class="md:col-span-6 luxury-card rounded-[2rem] p-6 sm:p-8 flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-madrasah-600 via-amber-400 to-madrasah-600"></div>
+                
+                <!-- Salam Pembuka Mewah & Ceria di Atas Form -->
+                <div class="text-center mb-6 bg-gradient-to-br from-madrasah-700 via-madrasah-600 to-emerald-600 text-white p-5 sm:p-6 rounded-3xl shadow-lg border-2 border-amber-300/80 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-white/10 rounded-full blur-md"></div>
+                    <div class="absolute -left-4 -bottom-4 w-16 h-16 bg-amber-300/20 rounded-full blur-md"></div>
+                    
+                    <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/15 text-amber-200 text-xs font-semibold mb-2">
+                        <i class="fas fa-sparkles"></i> Halo Sahabat Matematika!
+                    </div>
+                    <p class="font-display text-lg sm:text-xl font-semibold text-madrasah-100 mb-1">
+                        Assalamu’alaikum Warahmatullahi Wabarakatuh
+                    </p>
+                    <h2 class="font-display text-2xl sm:text-3xl font-bold tracking-wide text-white drop-shadow-xs">
+                        Selamat Datang Murid-murid Hebat
+                    </h2>
+                </div>
+
+                <!-- Pesan Peringatan Validasi (Pengganti alert) -->
+                <div id="form-error" class="hidden mb-4 p-3.5 rounded-2xl bg-red-50 border-2 border-red-300 text-red-700 text-sm font-semibold flex items-center gap-2.5 animate-pulse">
+                    <i class="fas fa-exclamation-circle text-lg text-red-500"></i>
+                    <span id="form-error-text">Mohon isi Nama Lengkap dan pilih Kelas terlebih dahulu!</span>
+                </div>
+
+                <!-- Form Pengisian Identitas -->
+                <form id="identity-form" class="space-y-5" novalidate>
+                    <div>
+                        <label for="student-name" class="block text-sm font-bold text-madrasah-900 mb-2 flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-madrasah-100 text-madrasah-700 flex items-center justify-center border border-madrasah-300">
+                                <i class="fas fa-user-graduate text-xs"></i>
+                            </span>
+                            <span>Nama Lengkap Siswa <span class="text-red-500">*</span></span>
+                        </label>
+                        <input type="text" 
+                               id="student-name" 
+                               placeholder="Tulis nama lengkapmu di sini..." 
+                               required
+                               class="w-full px-4 py-3.5 rounded-2xl border-2 border-madrasah-200 bg-madrasah-50/60 text-slate-800 font-semibold focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-madrasah-500/15 focus:bg-white transition-all placeholder:text-slate-400 placeholder:font-normal">
+                    </div>
+
+                    <div>
+                        <label for="student-class" class="block text-sm font-bold text-madrasah-900 mb-2 flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center border border-amber-300">
+                                <i class="fas fa-chalkboard-user text-xs"></i>
+                            </span>
+                            <span>Pilih Kelas <span class="text-red-500">*</span></span>
+                        </label>
+                        <div class="relative">
+                            <select id="student-class" 
+                                    required
+                                    class="w-full px-4 py-3.5 rounded-2xl border-2 border-madrasah-200 bg-madrasah-50/60 text-slate-800 font-semibold focus:outline-none focus:border-amber-400 focus:ring-4 focus:ring-madrasah-500/15 focus:bg-white transition-all appearance-none cursor-pointer">
+                                <option value="" disabled selected>-- Pilih Kelas Kamu --</option>
+                                <option value="Kelas 6 A">Kelas 6 A</option>
+                                <option value="Kelas 6 B">Kelas 6 B</option>
+                                <option value="Kelas 6 C">Kelas 6 C</option>
+                                <option value="Kelas 6 D">Kelas 6 D</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-madrasah-700">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Mulai Belajar 3D Mewah -->
+                    <div class="pt-3">
+                        <button type="submit" 
+                                class="btn-3d-green w-full bg-gradient-to-r from-madrasah-600 via-madrasah-500 to-emerald-500 text-white font-display font-bold text-lg sm:text-xl py-4 px-6 rounded-2xl border-2 border-amber-300/70 flex items-center justify-center gap-3 cursor-pointer">
+                            <i class="fas fa-rocket text-amber-300"></i>
+                            <span>Mulai Belajar</span>
+                            <i class="fas fa-arrow-right-to-bracket"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Beranda -->
+        <footer class="mt-6 text-center text-xs sm:text-sm text-madrasah-900 font-medium bg-white/70 backdrop-blur-xs py-2 px-4 rounded-full max-w-xl mx-auto border border-madrasah-200 shadow-xs">
+            &copy; 2026 MIN 1 Kabupaten Gorontalo &bull; Created by <strong class="text-madrasah-700">Adrianto Umar</strong>
+        </footer>
+    </main>
+
+    <!-- ===================================================================== -->
+    <!-- HALAMAN 2: TAMPILAN MENU PEMBELAJARAN (TERBAGI TIGA BAGIAN)           -->
+    <!-- ===================================================================== -->
+    <div id="menu-view" class="relative z-10 hidden flex-1 flex flex-col max-w-7xl mx-auto w-full p-3 sm:p-5 lg:p-6 gap-4 fade-in">
+        
+        <!-- Bar Info Siswa Mewah & Tombol Kembali -->
+        <div class="luxury-card rounded-3xl px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3 border-2 border-amber-300/60">
+            <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-madrasah-600 to-emerald-500 text-white flex items-center justify-center font-bold text-xl shadow-md border-2 border-amber-300">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-madrasah-700 font-semibold flex items-center gap-1">
+                        <i class="fas fa-star text-amber-400"></i> Semangat Belajar Hari Ini,
+                    </p>
+                    <p class="text-base sm:text-lg font-display font-bold text-madrasah-950 flex flex-wrap items-center gap-2">
+                        <span id="display-name">Siswa</span> 
+                        <span id="display-class" class="bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-900 border border-amber-300 px-3 py-0.5 rounded-full text-xs font-bold shadow-2xs">Kelas 6</span>
+                    </p>
+                </div>
+            </div>
+            <button id="btn-logout" 
+                    class="text-xs sm:text-sm font-display font-bold text-madrasah-800 hover:text-red-600 bg-madrasah-50 hover:bg-red-50 border-2 border-madrasah-200 hover:border-red-200 px-4 py-2.5 rounded-2xl transition-all flex items-center gap-2 cursor-pointer shadow-xs">
+                <i class="fas fa-house-chimney"></i>
+                <span>Ke Beranda</span>
+            </button>
+        </div>
+
+        <!-- LAYOUT UTAMA 3 BAGIAN: KIRI (Daftar Materi) & KANAN (Atas: Tab Navigasi, Bawah: Konten) -->
+        <div class="flex-1 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-start">
+            
+            <!-- 1. BAGIAN KIRI: DAFTAR MATERI -->
+            <aside class="md:col-span-4 lg:col-span-3 luxury-card rounded-[2rem] p-4 sm:p-5 md:sticky md:top-16">
+                <div class="flex items-center gap-3 pb-3.5 mb-3.5 border-b-2 border-madrasah-100">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-madrasah-600 to-emerald-500 text-white flex items-center justify-center shadow-sm border border-amber-300">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-display font-bold text-lg text-madrasah-950 leading-none">Daftar Materi</h2>
+                        <span class="text-[11px] text-madrasah-600 font-semibold">Pilih bab pelajaran</span>
+                    </div>
+                </div>
+                
+                <nav id="topic-list" class="grid grid-cols-1 gap-2.5">
+                    <!-- Tombol materi akan dirender via JavaScript -->
+                </nav>
+
+                <!-- Kotak Motivasi Ceria -->
+                <div class="mt-5 p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200 hidden md:block shadow-2xs">
+                    <p class="text-xs text-amber-950 leading-relaxed">
+                        <i class="fas fa-trophy text-amber-500 mr-1 text-sm"></i>
+                        <strong>Misi Juara:</strong> Baca <em>Ringkasan Materi</em>, kumpulkan poin di <em>Game</em>, dan raih nilai 100 di <em>Latihan</em>!
+                    </p>
+                </div>
+            </aside>
+
+            <!-- KOLOM KANAN (TERDIRI DARI BAGIAN ATAS & BAGIAN KANAN/ISI) -->
+            <div class="md:col-span-8 lg:col-span-9 flex flex-col gap-4 sm:gap-5">
+                
+                <!-- 2. BAGIAN ATAS: TAB PILIHAN (Ringkasan materi, Game, dan latihan) -->
+                <div class="luxury-card rounded-[2rem] p-2.5 sm:p-3">
+                    <div id="tab-list" class="grid grid-cols-3 gap-2 sm:gap-3">
+                        <button data-tab="ringkasan" class="tab-btn active-tab flex items-center justify-center gap-2 py-3.5 px-3 sm:px-5 rounded-2xl font-display font-bold text-sm sm:text-base transition-all cursor-pointer">
+                            <i class="fas fa-book-reader"></i>
+                            <span>Ringkasan Materi</span>
+                        </button>
+                        <button data-tab="game" class="tab-btn flex items-center justify-center gap-2 py-3.5 px-3 sm:px-5 rounded-2xl font-display font-bold text-sm sm:text-base transition-all cursor-pointer">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Game</span>
+                        </button>
+                        <button data-tab="latihan" class="tab-btn flex items-center justify-center gap-2 py-3.5 px-3 sm:px-5 rounded-2xl font-display font-bold text-sm sm:text-base transition-all cursor-pointer">
+                            <i class="fas fa-medal"></i>
+                            <span>Latihan</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. BAGIAN KANAN (DI BAWAH BAGIAN ATAS): ISI KONTEN DINAMIS -->
+                <section id="content-area" class="luxury-card rounded-[2rem] p-5 sm:p-7 lg:p-8 min-h-[480px] fade-in relative overflow-hidden">
+                    <!-- Konten Ringkasan Materi, Game, atau Latihan dirender di sini -->
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL KONFIRMASI KEMBALI KE BERANDA (Pengganti confirm()) -->
+    <div id="confirm-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] max-w-sm w-full p-6 shadow-2xl border-2 border-amber-300 text-center fade-in">
+            <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mx-auto mb-4 border-2 border-amber-300 shadow-inner">
+                <i class="fas fa-door-open"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-slate-800 mb-2">Kembali ke Beranda?</h3>
+            <p class="text-sm text-slate-600 mb-6">Kamu akan kembali ke halaman depan pengisian identitas.</p>
+            <div class="flex gap-3">
+                <button id="cancel-logout" class="flex-1 py-3 px-4 rounded-2xl font-display font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer">
+                    Batal
+                </button>
+                <button id="confirm-logout" class="btn-3d-green flex-1 py-3 px-4 rounded-2xl font-display font-bold bg-madrasah-600 text-white transition-colors cursor-pointer">
+                    Ya, Kembali
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- LOGIKA APLIKASI, DATA MATERI, GAME EDUKATIF, & KUIS INTERAKTIF        -->
+    <!-- ===================================================================== -->
+    <script>
+        // --- 1. AUDIO SYNTHESIZER (TONE.JS) UNTUK EFEK SUARA ---
+        const soundFX = {
+            playClick() {
+                try {
+                    if (Tone.context.state !== 'running') Tone.start();
+                    const synth = new Tone.Synth({ oscillator: { type: 'sine' }, envelope: { attack: 0.005, decay: 0.08, sustain: 0, release: 0.08 } }).toDestination();
+                    synth.triggerAttackRelease('C5', '32n');
+                } catch (e) {}
+            },
+            playCorrect() {
+                try {
+                    if (Tone.context.state !== 'running') Tone.start();
+                    const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+                    const now = Tone.now();
+                    synth.triggerAttackRelease('C5', '16n', now);
+                    synth.triggerAttackRelease('E5', '16n', now + 0.08);
+                    synth.triggerAttackRelease('G5', '8n', now + 0.16);
+                } catch (e) {}
+            },
+            playWrong() {
+                try {
+                    if (Tone.context.state !== 'running') Tone.start();
+                    const synth = new Tone.Synth({ oscillator: { type: 'sawtooth' }, envelope: { attack: 0.01, decay: 0.2, sustain: 0, release: 0.1 } }).toDestination();
+                    synth.triggerAttackRelease('A2', '8n');
+                } catch (e) {}
+            }
+        };
+
+        // --- 2. DATABASE MATERI, GAME, & LATIHAN MATEMATIKA KELAS 6 ---
+        const learningData = {
+            pecahan: {
+                id: 'pecahan',
+                title: 'Pecahan dan Desimal',
+                icon: 'fa-chart-pie',
+                color: 'emerald',
+                summary: `
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-madrasah-100 pb-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full bg-madrasah-100 text-madrasah-800 text-xs font-bold mb-1.5">BAB 1 &bull; RINGKASAN MATERI (DOKUMEN PDF)</span>
+                                <h2 class="font-display text-2xl sm:text-3xl font-bold text-madrasah-900">Pecahan dan Desimal</h2>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2.5">
+                                <button type="button" 
+                                        onclick="toggleBab1VideoPanel()" 
+                                        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-red-600 hover:bg-red-700 text-white border-2 border-red-200 font-display font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer">
+                                    <i class="fab fa-youtube text-lg text-white"></i>
+                                    <span>Video Pembelajaran</span>
+                                    <i id="bab1-video-chevron" class="fas fa-chevron-down text-xs ml-0.5 transition-transform duration-300"></i>
+                                </button>
+                                <a href="https://drive.google.com/file/d/1q1TM7CpAdyKnByG2wnppK6vh1_LQlhhT/view?usp=drive_link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-madrasah-50 hover:bg-madrasah-100 text-madrasah-800 border-2 border-madrasah-200 font-display font-bold text-xs sm:text-sm transition-all shadow-2xs">
+                                    <i class="fas fa-up-right-from-square text-madrasah-600"></i>
+                                    <span>Buka PDF di Tab Baru</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Panel Pilihan 3 Video Pembelajaran YouTube Bab 1 -->
+                        <div id="bab1-video-panel" class="hidden rounded-3xl bg-gradient-to-br from-red-50 via-white to-amber-50 border-2 border-red-200 p-4 sm:p-5 shadow-md space-y-4 fade-in">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center shadow-sm">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-display font-bold text-base sm:text-lg text-slate-800 leading-tight">Pilih Video Pembelajaran Bab 1</h3>
+                                        <p class="text-xs text-slate-500">Klik salah satu judul video di bawah untuk memutarnya</p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="toggleBab1VideoPanel()" class="w-8 h-8 rounded-xl bg-white hover:bg-red-100 text-slate-500 hover:text-red-600 border border-slate-200 flex items-center justify-center transition-colors cursor-pointer" title="Tutup panel video">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+
+                            <!-- 3 Tombol Pilihan Video -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <button type="button" 
+                                        onclick="playBab1Video(0)" 
+                                        id="bab1-vid-btn-0"
+                                        class="bab1-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 1</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Perkalian pecahan dengan bilangan asli</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" 
+                                        onclick="playBab1Video(1)" 
+                                        id="bab1-vid-btn-1"
+                                        class="bab1-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 2</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Pembagian pecahan dengan bilangan asli</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" 
+                                        onclick="playBab1Video(2)" 
+                                        id="bab1-vid-btn-2"
+                                        class="bab1-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 3</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Mengubah pecahan menjadi bilangan desimal</span>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- Pemutar Video YouTube Tersemat -->
+                            <div id="bab1-video-player-box" class="hidden space-y-2.5 pt-2">
+                                <div class="flex flex-wrap items-center justify-between gap-2 bg-white px-4 py-2.5 rounded-2xl border border-red-200">
+                                    <p id="bab1-active-video-title" class="font-display font-bold text-sm sm:text-base text-red-700 flex items-center gap-2">
+                                        <i class="fas fa-play-circle"></i> <span>Judul Video</span>
+                                    </p>
+                                    <div class="flex items-center gap-3">
+                                        <button type="button" onclick="closeBab1VideoPlayer()" class="text-xs font-bold text-slate-500 hover:text-red-600 flex items-center gap-1 cursor-pointer">
+                                            <i class="fas fa-stop-circle"></i>
+                                            <span>Tutup Pemutar</span>
+                                        </button>
+                                        <a id="bab1-active-video-link" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-red-600 hover:text-red-800 flex items-center gap-1.5 bg-red-50 px-2.5 py-1 rounded-lg border border-red-200">
+                                            <span>Buka YouTube</span>
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="bab1-iframe-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-red-300 bg-slate-900 shadow-lg">
+                                    <!-- Iframe pemutar video dirender dinamis di sini -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Penampil Dokumen PDF Google Drive -->
+                        <div class="relative w-full h-[520px] sm:h-[620px] rounded-3xl overflow-hidden border-2 border-madrasah-200 bg-madrasah-50/60 shadow-inner">
+                            <iframe src="https://drive.google.com/file/d/1q1TM7CpAdyKnByG2wnppK6vh1_LQlhhT/preview" 
+                                    class="w-full h-full border-0" 
+                                    allow="autoplay"
+                                    title="Ringkasan Materi Bab 1 - Pecahan dan Desimal">
+                            </iframe>
+                        </div>
+
+                        <p class="text-xs text-slate-500 text-center">
+                            <i class="fas fa-info-circle text-madrasah-600 mr-1"></i>
+                            Gunakan fitur perbesar (zoom) atau gulir ke bawah pada bingkai dokumen di atas untuk membaca seluruh isi materi Bab 1.
+                        </p>
+                    </div>
+                `,
+                quiz: [
+                    // 1. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Adit pergi ke kebunnya untuk mengumpulkan buah mangga yang sudah matang. Hasil dari memetik buah mangga tersebut dimasukkan ke dalam beberapa kantung plastik. Buah mangga yang dikumpulkan Adit sebanyak 6 kantung plastik. Jika setiap kantung plastik berisi buah mangga sebanyak 7/3 kg, maka total berat mangga yang dikumpulkan Adit adalah seberat...",
+                        options: ["42/3 kg", "18/7 kg", "13/5 kg", "21/6 kg"],
+                        ans: 0,
+                        exp: "Total berat mangga = 6 kantung × 7/3 kg = (6 × 7)/3 = 42/3 kg."
+                    },
+                    // 2. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Risman adalah seorang pedagang minyak goreng. Suatu hari minyak goreng yang akan dijual cepat habis karena banyaknya pembeli, sehingga Risman harus membeli lagi minyak goreng di distributor. Risman membeli minyak goreng sebanyak 8 galon. Jika setiap galon berisi minyak goreng sebanyak 34/3 kg, maka berat total minyak goreng yang dibeli Risman adalah...",
+                        options: ["240/3 kg", "272/3 kg", "24/34 kg", "250/7 kg"],
+                        ans: 1,
+                        exp: "Berat total minyak goreng = 8 galon × 34/3 kg = (8 × 34)/3 = 272/3 kg."
+                    },
+                    // 3. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Akbar adalah seorang yang dikenal dermawan. Dia sering membagikan kelebihan hartanya kepada orang-orang yang kurang mampu. Suatu hari dia berniat membagikan beras kepada orang-orang yang kurang mampu. Akbar memiliki persediaan beras sebanyak 25/2 kg. Jika Akbar ingin membagikan beras tersebut kepada 8 orang sama banyak, maka berat beras yang diterima oleh setiap orang adalah...",
+                        options: ["200/2 kg", "14/16 kg", "25/16 kg", "16/25 kg"],
+                        ans: 2,
+                        exp: "Berat beras per orang = 25/2 kg ÷ 8 = 25/2 × 1/8 = 25/16 kg."
+                    },
+                    // 4. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Arsyad memiliki buah rambutan sebanyak 8 kg. Buah rambutan tersebut akan dibagikan kepada beberapa orang temannya. Jika setiap orang mendapatkan rambutan seberat 4/3 kg, jumlah teman yang mendapatkan pembagian rambutan tersebut adalah...",
+                        options: ["5 orang", "7 orang", "8 orang", "6 orang"],
+                        ans: 3,
+                        exp: "Jumlah teman = 8 kg ÷ 4/3 kg = 8 × 3/4 = 24/4 = 6 orang."
+                    },
+                    // 5. Pilihan Ganda Kompleks
+                    {
+                        type: 'multiple',
+                        q: "Muti memiliki 12 bola plastik. 1/6 bagian dari bola plastik tersebut berwarna merah. 2/3 bagian dari bola tersebut berwarna biru, dan sisanya berwarna kuning. Pernyataan yang sesuai dengan cerita di atas adalah... (Pilih lebih dari satu jawaban benar)",
+                        options: [
+                            "Bola merah sebanyak 2 buah",
+                            "Bola biru sebanyak 4 buah",
+                            "Bola kuning sebanyak 5 buah",
+                            "Bola biru sebanyak 8 buah",
+                            "Bola merah sebanyak 7 buah"
+                        ],
+                        ans: [0, 3],
+                        exp: "Bola merah = 1/6 × 12 = 2 buah (Pernyataan A benar). Bola biru = 2/3 × 12 = 8 buah (Pernyataan D benar). Sisanya bola kuning = 12 - (2 + 8) = 2 buah."
+                    },
+                    // 6. Pilihan Ganda Kompleks
+                    {
+                        type: 'multiple',
+                        q: "Geran memiliki buah langsat sebanyak 14/3 kg. Buah langsat tersebut akan dibagikan ke beberapa orang temannya. Pernyataan yang sesuai dengan cerita di atas adalah... (Pilih lebih dari satu jawaban benar)",
+                        options: [
+                            "Jika langsat tersebut dibagikan kepada 5 orang sama banyak, maka setiap orang mendapatkan buah langsat sebanyak 14/15 kg.",
+                            "Jika langsat tersebut dibagikan kepada 4 orang sama banyak, maka setiap orang mendapatkan buah langsat sebanyak 12/14 kg.",
+                            "Jika langsat tersebut dibagikan kepada 6 orang sama banyak, maka setiap orang mendapatkan buah langsat sebanyak 14/18 kg.",
+                            "Jika langsat tersebut dibagikan kepada 3 orang sama banyak, maka setiap orang mendapatkan buah langsat sebanyak 9/14 kg.",
+                            "Jika langsat tersebut dibagikan kepada 2 orang sama banyak, maka setiap orang mendapatkan buah langsat sebanyak 14/8 kg."
+                        ],
+                        ans: [0, 2],
+                        exp: "Dibagi 5 orang: 14/3 ÷ 5 = 14/15 kg (Pernyataan A benar). Dibagi 6 orang: 14/3 ÷ 6 = 14/18 kg (Pernyataan C benar)."
+                    },
+                    // 7. Isian
+                    {
+                        type: 'short',
+                        q: "Dalam sebuah kegiatan sosial, Rizal membagikan beras kepada beberapa keluarga yang secara ekonomi dikatakan kurang mampu. Rizal membagikan beras tersebut kepada 23 kepala keluarga di sekitar rumahnya. Jika setiap kepala keluarga mendapatkan beras sebanyak 9/2 kg, maka berapa total berat beras yang dibagikan oleh Rizal?",
+                        placeholder: "Contoh: 207/2 kg atau 103,5 kg",
+                        acceptedAnswers: ["207/2", "207/2 kg", "103,5", "103,5 kg", "103.5", "103.5 kg", "103 1/2", "103 1/2 kg"],
+                        displayAnswer: "207/2 kg (atau 103,5 kg)",
+                        exp: "Total berat beras = 23 × 9/2 kg = 207/2 kg = 103 1/2 kg (atau 103,5 kg)."
+                    },
+                    // 8. Isian
+                    {
+                        type: 'short',
+                        q: "Rahman memelihara ayam di lahan belakang rumahnya. Rahman memelihara ayam sebanyak 18 ekor. Jika 2/3 bagian dari seluruh ayam yang dia punya adalah ayam betina, maka berapa ekor ayam jantan yang dimiliki Rahman?",
+                        placeholder: "Contoh: 6 ekor",
+                        acceptedAnswers: ["6", "6 ekor"],
+                        displayAnswer: "6 ekor",
+                        exp: "Ayam betina = 2/3 × 18 = 12 ekor. Jadi, ayam jantan = 18 - 12 = 6 ekor (atau 1/3 × 18 = 6 ekor)."
+                    },
+                    // 9. Isian
+                    {
+                        type: 'short',
+                        q: "Tiara adalah seorang pedagang gula pasir. Gula pasir dagangannya merupakan gula pasir yang sangat diminati oleh pembeli. Suatu hari, gula pasir yang Tiara jual tersisa sebanyak 18/5 kg. Sisa gula tersebut akan dibagikan kepada 4 orang tetangganya. Jika setiap orang mendapatkan gula pasir dengan berat yang sama, maka berapa berat gula pasir yang diterima oleh setiap orang?",
+                        placeholder: "Contoh: 18/20 kg atau 9/10 kg",
+                        acceptedAnswers: ["18/20", "18/20 kg", "9/10", "9/10 kg", "0,9", "0,9 kg", "0.9", "0.9 kg"],
+                        displayAnswer: "18/20 kg atau 9/10 kg (0,9 kg)",
+                        exp: "Berat gula per orang = 18/5 kg ÷ 4 = 18/5 × 1/4 = 18/20 kg = 9/10 kg (atau 0,9 kg)."
+                    },
+                    // 10. Isian
+                    {
+                        type: 'short',
+                        q: "Kholil memiliki tali sepanjang 12 meter. Tali tersebut akan digunakan untuk mengikat beberapa tumpukan kayu. Jika setiap tumpukan kayu membutuhkan tali sepanjang 4/3 meter, berapa banyak tumpukan kayu yang dapat diikat oleh Kholil?",
+                        placeholder: "Contoh: 9 tumpukan",
+                        acceptedAnswers: ["9", "9 tumpukan", "9 tumpukan kayu"],
+                        displayAnswer: "9 tumpukan kayu",
+                        exp: "Banyak tumpukan kayu = 12 ÷ 4/3 = 12 × 3/4 = 36/4 = 9 tumpukan kayu."
+                    }
+                ]
+            },
+            rasio: {
+                id: 'rasio',
+                title: 'Rasio',
+                icon: 'fa-scale-balanced',
+                color: 'teal',
+                summary: `
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-madrasah-100 pb-4">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full bg-madrasah-100 text-madrasah-800 text-xs font-bold mb-1.5">BAB 2 &bull; RINGKASAN MATERI (DOKUMEN PDF)</span>
+                                <h2 class="font-display text-2xl sm:text-3xl font-bold text-madrasah-900">Rasio (Perbandingan)</h2>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2.5">
+                                <button type="button" 
+                                        onclick="toggleBab2VideoPanel()" 
+                                        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-red-600 hover:bg-red-700 text-white border-2 border-red-200 font-display font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer">
+                                    <i class="fab fa-youtube text-lg text-white"></i>
+                                    <span>Video Pembelajaran</span>
+                                    <i id="bab2-video-chevron" class="fas fa-chevron-down text-xs ml-0.5 transition-transform duration-300"></i>
+                                </button>
+                                <a href="https://drive.google.com/file/d/1MBi3EfxRRqBnGofq1Os0wa5GUrGto8HN/view?usp=drive_link" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-madrasah-50 hover:bg-madrasah-100 text-madrasah-800 border-2 border-madrasah-200 font-display font-bold text-xs sm:text-sm transition-all shadow-2xs">
+                                    <i class="fas fa-up-right-from-square text-madrasah-600"></i>
+                                    <span>Buka PDF di Tab Baru</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Panel Pilihan 5 Video Pembelajaran YouTube Bab 2 -->
+                        <div id="bab2-video-panel" class="hidden rounded-3xl bg-gradient-to-br from-red-50 via-white to-amber-50 border-2 border-red-200 p-4 sm:p-5 shadow-md space-y-4 fade-in">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center shadow-sm">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-display font-bold text-base sm:text-lg text-slate-800 leading-tight">Pilih Video Pembelajaran Bab 2</h3>
+                                        <p class="text-xs text-slate-500">Klik salah satu judul video di bawah untuk memutarnya</p>
+                                    </div>
+                                </div>
+                                <button type="button" onclick="toggleBab2VideoPanel()" class="w-8 h-8 rounded-xl bg-white hover:bg-red-100 text-slate-500 hover:text-red-600 border border-slate-200 flex items-center justify-center transition-colors cursor-pointer" title="Tutup panel video">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+
+                            <!-- 5 Tombol Pilihan Video -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                <button type="button" 
+                                        onclick="playBab2Video(0)" 
+                                        id="bab2-vid-btn-0"
+                                        class="bab2-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 1</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Konsep Rasio</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" 
+                                        onclick="playBab2Video(1)" 
+                                        id="bab2-vid-btn-1"
+                                        class="bab2-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 2</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Konsep Kesamaan Rasio</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" 
+                                        onclick="playBab2Video(2)" 
+                                        id="bab2-vid-btn-2"
+                                        class="bab2-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 3</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Rasio Satuan</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" 
+                                        onclick="playBab2Video(3)" 
+                                        id="bab2-vid-btn-3"
+                                        class="bab2-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 4</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Rasio Bagian Terhadap Bagian dan Rasio Bagian Terhadap Keseluruhan</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" 
+                                        onclick="playBab2Video(4)" 
+                                        id="bab2-vid-btn-4"
+                                        class="bab2-vid-btn text-left p-3.5 rounded-2xl bg-white hover:bg-red-50/70 border-2 border-red-200 hover:border-red-400 transition-all flex items-start gap-3 shadow-2xs cursor-pointer group">
+                                    <div class="w-9 h-9 rounded-xl bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white flex items-center justify-center shrink-0 transition-colors mt-0.5">
+                                        <i class="fab fa-youtube text-lg"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <span class="block text-[10px] font-bold uppercase tracking-wider text-red-600 mb-0.5">Video 5</span>
+                                        <span class="font-display font-bold text-xs sm:text-sm text-slate-800 leading-snug block">Rasio Terhadap Durasi Waktu</span>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- Pemutar Video YouTube Tersemat Bab 2 -->
+                            <div id="bab2-video-player-box" class="hidden space-y-2.5 pt-2">
+                                <div class="flex flex-wrap items-center justify-between gap-2 bg-white px-4 py-2.5 rounded-2xl border border-red-200">
+                                    <p id="bab2-active-video-title" class="font-display font-bold text-sm sm:text-base text-red-700 flex items-center gap-2">
+                                        <i class="fas fa-play-circle"></i> <span>Judul Video</span>
+                                    </p>
+                                    <div class="flex items-center gap-3">
+                                        <button type="button" onclick="closeBab2VideoPlayer()" class="text-xs font-bold text-slate-500 hover:text-red-600 flex items-center gap-1 cursor-pointer">
+                                            <i class="fas fa-stop-circle"></i>
+                                            <span>Tutup Pemutar</span>
+                                        </button>
+                                        <a id="bab2-active-video-link" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-red-600 hover:text-red-800 flex items-center gap-1.5 bg-red-50 px-2.5 py-1 rounded-lg border border-red-200">
+                                            <span>Buka YouTube</span>
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="bab2-iframe-container" class="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-red-300 bg-slate-900 shadow-lg">
+                                    <!-- Iframe pemutar video dirender dinamis di sini -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Penampil Dokumen PDF Google Drive -->
+                        <div class="relative w-full h-[520px] sm:h-[620px] rounded-3xl overflow-hidden border-2 border-madrasah-200 bg-madrasah-50/60 shadow-inner">
+                            <iframe src="https://drive.google.com/file/d/1MBi3EfxRRqBnGofq1Os0wa5GUrGto8HN/preview" 
+                                    class="w-full h-full border-0" 
+                                    allow="autoplay"
+                                    title="Ringkasan Materi Bab 2 - Rasio">
+                            </iframe>
+                        </div>
+
+                        <p class="text-xs text-slate-500 text-center">
+                            <i class="fas fa-info-circle text-madrasah-600 mr-1"></i>
+                            Gunakan fitur perbesar (zoom) atau gulir ke bawah pada bingkai dokumen di atas untuk membaca seluruh isi materi Bab 2.
+                        </p>
+                    </div>
+                `,
+                quiz: [
+                    // 1. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Fadrizan dan Sukran adalah saudara. Umur Fadrizan 32 tahun, sedangkan umur Sukran 40 tahun. Perbandingan umur Fadrizan dan Sukran adalah ...",
+                        options: ["4 : 5", "3 : 4", "3 : 5", "2 : 3"],
+                        ans: 0,
+                        exp: "Perbandingan umur Fadrizan dan Sukran = 32 : 40. Disederhanakan dengan membagi kedua bilangan dengan 8 menjadi 4 : 5."
+                    },
+                    // 2. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Pak Kepala Desa meminta Wahyu dan Erwin untuk mengumpulkan kelapa di kebun milik Pak Kepala Desa. Perbandingan kelapa yang dikumpulkan Wahyu dan Erwin adalah 4 : 5. Jika Erwin berhasil mengumpulkan kelapa sebanyak 20 buah, maka kelapa yang berhasil dikumpulkan Wahyu adalah sebanyak ...",
+                        options: ["20 buah", "16 buah", "21 buah", "14 buah"],
+                        ans: 1,
+                        exp: "Kelapa Wahyu = (4/5) × 20 buah = 4 × 4 = 16 buah."
+                    },
+                    // 3. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Perbandingan umur Ilham dan Radit adalah 2 : 3. Jika jumlah umur mereka 25 tahun, maka umur Radit adalah ...",
+                        options: ["16 tahun", "17 tahun", "15 tahun", "18 tahun"],
+                        ans: 2,
+                        exp: "Jumlah perbandingan = 2 + 3 = 5. Umur Radit = (3/5) × 25 tahun = 3 × 5 = 15 tahun."
+                    },
+                    // 4. Pilihan Ganda
+                    {
+                        type: 'single',
+                        q: "Farhan dan Aliando bekerja sebagai pemetik buah mangga di kebun Pak Joko. Pada saat panen tiba, perbandingan jumlah petikan mangga Farhan dan Aliando adalah 2 : 5. Jika selisih jumlah petikan mangga Farhan dan Aliando adalah 27 buah mangga, maka jumlah mangga yang berhasil dipetik Aliando adalah ...",
+                        options: ["30 buah", "35 buah", "40 buah", "45 buah"],
+                        ans: 3,
+                        exp: "Selisih perbandingan = 5 - 2 = 3. Mangga Aliando = (5/3) × 27 buah = 5 × 9 = 45 buah."
+                    },
+                    // 5. Pilihan Ganda Kompleks
+                    {
+                        type: 'multiple',
+                        q: "Perhatikan cerita berikut! Fatmah dan Bulan membeli gula di toko barang harian. Perbandingan belanjaan Fatmah dan Bulan adalah 2 : 5. Jumlah total belanjaan gula mereka adalah 56 kg. Pernyataan yang sesuai dengan cerita di atas adalah ... (Pilih lebih dari satu jawaban benar)",
+                        options: [
+                            "Fatmah membeli gula sebanyak 16 kg",
+                            "Bulan membeli gula sebanyak 24 kg",
+                            "Bulan membeli gula sebanyak 40 kg",
+                            "Fatmah dan Bulan membeli gula sama banyak",
+                            "Fatmah membeli gula sebanyak 21 kg"
+                        ],
+                        ans: [0, 2],
+                        exp: "Jumlah perbandingan = 2 + 5 = 7. Belanjaan Fatmah = (2/7) × 56 = 16 kg (Pernyataan A benar). Belanjaan Bulan = (5/7) × 56 = 40 kg (Pernyataan C benar)."
+                    },
+                    // 6. Pilihan Ganda Kompleks
+                    {
+                        type: 'multiple',
+                        q: "Perhatikan cerita berikut! Suatu hari MIN 1 Kabupaten Gorontalo mendapat kunjungan dari puskesmas untuk mengukur berat badan siswa. Berdasarkan hasil timbangan, perbandingan berat badan Azam dan Erwin adalah 3 : 5. Jumlah berat badan mereka berdua adalah 72 kg. Pernyataan yang sesuai dengan cerita di atas adalah ... (Pilih lebih dari satu jawaban benar)",
+                        options: [
+                            "Berat badan Azam 72 kg",
+                            "Berat badan Erwin 45 kg",
+                            "Berat badan Azam 27 kg",
+                            "Berat badan Azam dan Erwin sama",
+                            "Berat badan Erwin 32 kg"
+                        ],
+                        ans: [1, 2],
+                        exp: "Jumlah perbandingan = 3 + 5 = 8. Berat badan Azam = (3/8) × 72 = 27 kg (Pernyataan C benar). Berat badan Erwin = (5/8) × 72 = 45 kg (Pernyataan B benar)."
+                    },
+                    // 7. Pilihan Ganda Kompleks
+                    {
+                        type: 'multiple',
+                        q: "Perhatikan cerita berikut! Faira dan Kanza adalah saudara kakak beradik. Perbandingan umur Faira dan Kanza adalah 2 : 5. Selisih umur mereka adalah 18 tahun. Pernyataan yang sesuai dengan cerita di atas adalah ... (Pilih lebih dari satu jawaban benar)",
+                        options: [
+                            "Umur Faira 18 tahun",
+                            "Umur Kanza 25 tahun",
+                            "Umur Faira 12 tahun",
+                            "Umur Faira dan Kanza sama",
+                            "Umur Kanza 30 tahun"
+                        ],
+                        ans: [2, 4],
+                        exp: "Selisih perbandingan = 5 - 2 = 3. Umur Faira = (2/3) × 18 = 12 tahun (Pernyataan C benar). Umur Kanza = (5/3) × 18 = 30 tahun (Pernyataan E benar)."
+                    },
+                    // 8. Isian Singkat
+                    {
+                        type: 'short',
+                        q: "Bilqis dan Naila adalah saudara. Umur Bilqis 20 tahun, sedangkan umur Naila 32 tahun. Perbandingan umur Bilqis dan Naila adalah ...",
+                        placeholder: "Contoh: 5 : 8",
+                        acceptedAnswers: ["5 : 8", "5:8", "5 banding 8"],
+                        displayAnswer: "5 : 8",
+                        exp: "Perbandingan umur = 20 : 32. Disederhanakan dengan membagi kedua bilangan dengan 4 menjadi 5 : 8."
+                    },
+                    // 9. Isian Singkat
+                    {
+                        type: 'short',
+                        q: "Perbandingan umur Fatir dan Farhan adalah 3 : 5. Jika jumlah umur mereka 24 tahun, maka umur Farhan adalah ...",
+                        placeholder: "Contoh: 15 tahun",
+                        acceptedAnswers: ["15", "15 tahun"],
+                        displayAnswer: "15 tahun",
+                        exp: "Jumlah perbandingan = 3 + 5 = 8. Umur Farhan = (5/8) × 24 tahun = 5 × 3 = 15 tahun."
+                    },
+                    // 10. Isian Singkat
+                    {
+                        type: 'short',
+                        q: "Erwin membeli dua jenis buku di warung. Erwin membeli buku A sebanyak 3 buah dengan harga Rp 15.000 dan buku B sebanyak 4 buah dengan harga Rp 16.000. Di antara kedua jenis buku tersebut, buku yang paling mahal adalah ...",
+                        placeholder: "Contoh: Buku A",
+                        acceptedAnswers: ["buku a", "a"],
+                        displayAnswer: "Buku A",
+                        exp: "Harga satuan Buku A = Rp15.000 ÷ 3 = Rp5.000/buku. Harga satuan Buku B = Rp16.000 ÷ 4 = Rp4.000/buku. Jadi, buku yang paling mahal adalah Buku A."
+                    }
+                ]
+            }
+        };
+
+        // --- 3. STATE APLIKASI ---
+        let state = {
+            studentName: '',
+            studentClass: '',
+            activeTopic: 'pecahan',
+            activeTab: 'ringkasan',
+            // State Kuis
+            quizAnswers: {},
+            quizSubmitted: false,
+            backupStatus: 'idle', // 'idle' | 'saving' | 'saved' | 'error'
+            // State Game
+            gameScore: 0,
+            gameStreak: 0,
+            currentGameQuestion: null
+        };
+
+        // --- 4. REFERENSI DOM ---
+        const homeView = document.getElementById('home-view');
+        const menuView = document.getElementById('menu-view');
+        const identityForm = document.getElementById('identity-form');
+        const studentNameInput = document.getElementById('student-name');
+        const studentClassSelect = document.getElementById('student-class');
+        const formError = document.getElementById('form-error');
+        const displayName = document.getElementById('display-name');
+        const displayClass = document.getElementById('display-class');
+        const topicListEl = document.getElementById('topic-list');
+        const contentAreaEl = document.getElementById('content-area');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const confirmModal = document.getElementById('confirm-modal');
+
+        // --- 5. LOGIKA BERANDA & VALIDASI FORM ---
+        identityForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameVal = studentNameInput.value.trim();
+            const classVal = studentClassSelect.value;
+
+            if (!nameVal || !classVal) {
+                soundFX.playWrong();
+                formError.classList.remove('hidden');
+                if (!nameVal) studentNameInput.focus();
+                else studentClassSelect.focus();
+                return;
+            }
+
+            soundFX.playCorrect();
+            formError.classList.add('hidden');
+            state.studentName = nameVal;
+            state.studentClass = classVal;
+
+            // Update Info Siswa di Halaman Menu
+            displayName.textContent = state.studentName;
+            displayClass.textContent = state.studentClass;
+
+            // Transisi dari Beranda ke Menu
+            homeView.classList.add('hidden');
+            menuView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            renderTopicSidebar();
+            updateTabStyles();
+            renderContent();
+        });
+
+        // Hilangkan pesan error saat pengguna mulai mengetik
+        studentNameInput.addEventListener('input', () => formError.classList.add('hidden'));
+        studentClassSelect.addEventListener('change', () => formError.classList.add('hidden'));
+
+        // Tombol Kembali ke Beranda
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            soundFX.playClick();
+            confirmModal.classList.remove('hidden');
+        });
+        document.getElementById('cancel-logout').addEventListener('click', () => {
+            soundFX.playClick();
+            confirmModal.classList.add('hidden');
+        });
+        document.getElementById('confirm-logout').addEventListener('click', () => {
+            soundFX.playClick();
+            confirmModal.classList.add('hidden');
+            menuView.classList.add('hidden');
+            homeView.classList.remove('hidden');
+        });
+
+        // --- 6. RENDER SIDEBAR DAFTAR MATERI (BAGIAN KIRI) ---
+        function renderTopicSidebar() {
+            topicListEl.innerHTML = '';
+            Object.values(learningData).forEach((topic, idx) => {
+                const isActive = state.activeTopic === topic.id;
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left px-4 py-3.5 rounded-2xl font-display font-bold text-sm sm:text-base flex items-center gap-3 transition-all cursor-pointer ${
+                    isActive 
+                    ? 'bg-gradient-to-r from-madrasah-600 via-madrasah-500 to-emerald-500 text-white shadow-lg border-2 border-amber-300 transform scale-[1.02]' 
+                    : 'bg-madrasah-50/80 hover:bg-madrasah-100 text-madrasah-950 border-2 border-madrasah-200/80 hover:border-madrasah-400'
+                }`;
+                btn.innerHTML = `
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${isActive ? 'bg-amber-300 text-madrasah-950 shadow-sm' : 'bg-white text-madrasah-600 border border-madrasah-200 shadow-2xs'}">
+                        <i class="fas ${topic.icon}"></i>
+                    </div>
+                    <div class="flex-1 leading-snug">
+                        <span class="block text-[10px] uppercase tracking-wider ${isActive ? 'text-amber-200' : 'text-madrasah-600'}">Bab ${idx + 1}</span>
+                        <span>${topic.title}</span>
+                    </div>
+                    ${isActive ? '<i class="fas fa-star text-amber-300 text-sm"></i>' : ''}
+                `;
+                btn.addEventListener('click', () => {
+                    soundFX.playClick();
+                    state.activeTopic = topic.id;
+                    // Reset state kuis & game saat ganti materi
+                    state.quizAnswers = {};
+                    state.quizSubmitted = false;
+                    state.backupStatus = 'idle';
+                    state.gameScore = 0;
+                    state.gameStreak = 0;
+                    generateGameQuestion();
+                    renderTopicSidebar();
+                    renderContent();
+                });
+                topicListEl.appendChild(btn);
+            });
+        }
+
+        // --- 7. NAVIGASI TAB ATAS (Ringkasan Materi, Game, Latihan) ---
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                soundFX.playClick();
+                state.activeTab = btn.dataset.tab;
+                if (state.activeTab === 'game' && !state.currentGameQuestion) {
+                    generateGameQuestion();
+                }
+                updateTabStyles();
+                renderContent();
+            });
+        });
+
+        function updateTabStyles() {
+            tabBtns.forEach(btn => {
+                const isActive = btn.dataset.tab === state.activeTab;
+                if (isActive) {
+                    btn.className = 'tab-btn bg-gradient-to-r from-madrasah-600 to-emerald-500 text-white shadow-md border-2 border-amber-300 flex items-center justify-center gap-2 py-3.5 px-3 sm:px-5 rounded-2xl font-display font-bold text-sm sm:text-base transition-all cursor-pointer transform scale-[1.01]';
+                } else {
+                    btn.className = 'tab-btn bg-madrasah-50/80 hover:bg-madrasah-100 text-madrasah-900 border-2 border-transparent hover:border-madrasah-200 flex items-center justify-center gap-2 py-3.5 px-3 sm:px-5 rounded-2xl font-display font-bold text-sm sm:text-base transition-all cursor-pointer';
+                }
+            });
+        }
+
+        // --- 8. RENDER KONTEN UTAMA (BAGIAN KANAN) ---
+        function renderContent() {
+            const topic = learningData[state.activeTopic];
+            contentAreaEl.classList.remove('fade-in');
+            void contentAreaEl.offsetWidth; // trigger reflow animasi
+            contentAreaEl.classList.add('fade-in');
+
+            if (state.activeTab === 'ringkasan') {
+                contentAreaEl.innerHTML = `
+                    ${topic.summary}
+                    <div class="mt-8 pt-5 border-t-2 border-madrasah-100 flex flex-wrap justify-between items-center gap-3">
+                        <p class="text-xs sm:text-sm text-slate-600 font-medium">Sudah siap bermain sambil belajar, <strong class="text-madrasah-800">${state.studentName}</strong>?</p>
+                        <button onclick="switchTab('game')" class="btn-3d-gold bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-display font-bold px-6 py-3 rounded-2xl border border-amber-200 flex items-center gap-2 cursor-pointer">
+                            <i class="fas fa-gamepad"></i> Lanjut Main Game
+                        </button>
+                    </div>
+                `;
+            } else if (state.activeTab === 'game') {
+                renderGameView(topic);
+            } else if (state.activeTab === 'latihan') {
+                renderQuizView(topic);
+            }
+        }
+
+        window.switchTab = function(tabName) {
+            soundFX.playClick();
+            state.activeTab = tabName;
+            if (tabName === 'game') generateGameQuestion();
+            updateTabStyles();
+            renderContent();
+        };
+
+        // --- 9. GENERATOR & TAMPILAN GAME INTERAKTIF PER MATERI ---
+        function generateGameQuestion() {
+            const topic = state.activeTopic;
+            let q = {};
+
+            if (topic === 'pecahan') {
+                const pairs = [
+                    { frac: '1/2', dec: '0,5', opts: ['0,5', '0,2', '1,2', '0,25'] },
+                    { frac: '1/4', dec: '0,25', opts: ['0,14', '0,25', '0,4', '0,75'] },
+                    { frac: '3/4', dec: '0,75', opts: ['0,34', '0,5', '0,75', '0,8'] },
+                    { frac: '1/5', dec: '0,2', opts: ['0,15', '0,5', '0,2', '0,02'] },
+                    { frac: '3/5', dec: '0,6', opts: ['0,3', '0,5', '0,6', '0,8'] },
+                    { frac: '1/2 × 1/2', dec: '1/4', opts: ['1/4', '2/4', '1/2', '1'] },
+                    { frac: '3/4 ÷ 1/2', dec: '3/2', opts: ['3/8', '3/2', '4/6', '1/4'] }
+                ];
+                const pick = pairs[Math.floor(Math.random() * pairs.length)];
+                q = {
+                    prompt: `Tentukan hasil operasi atau nilai pecahan dari:`,
+                    highlight: pick.frac,
+                    answer: pick.dec,
+                    options: shuffleArray([...pick.opts])
+                };
+            } else if (topic === 'rasio') {
+                const ratios = [
+                    { raw: '15 : 35 (Siswa)', simp: '3 : 7', opts: ['3 : 7', '3 : 4', '4 : 7', '15 : 35'] },
+                    { raw: '3 : 5 (Kelereng)', simp: '25', opts: ['15', '25', '20', '30'] },
+                    { raw: '4 kg : Rp60.000', simp: 'Rp105.000', opts: ['Rp90.000', 'Rp105.000', 'Rp120.000', 'Rp140.000'] },
+                    { raw: 'Skala 1:200rb (5cm)', simp: '10 km', opts: ['10 km', '100 km', '1 km', '50 km'] },
+                    { raw: '180 km @ 60 km/jam', simp: '3 jam', opts: ['2 jam', '3 jam', '4 jam', '5 jam'] }
+                ];
+                const pick = ratios[Math.floor(Math.random() * ratios.length)];
+                q = {
+                    prompt: `Selesaikan masalah rasio/perbandingan berikut:`,
+                    highlight: pick.raw,
+                    answer: pick.simp,
+                    options: shuffleArray([...pick.opts])
+                };
+            }
+            state.currentGameQuestion = q;
+        }
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function renderGameView(topic) {
+            if (!state.currentGameQuestion) generateGameQuestion();
+            const gq = state.currentGameQuestion;
+
+            // Jika bab aktif adalah Pecahan dan Desimal, tampilkan game Pecah Balon
+            if (topic.id === 'pecahan') {
+                contentAreaEl.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-madrasah-100 pb-4">
+                            <div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-1">
+                                    <i class="fas fa-star text-amber-500"></i> GAME EDUKATIF &bull; PECAHAN DAN DESIMAL
+                                </span>
+                                <h2 class="font-display text-2xl font-bold text-madrasah-950">Game Pecah Balon Pecahan</h2>
+                            </div>
+                            <a href="https://arieskasim19-cloud.github.io/Pecahan-Pecah-Balon/" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-madrasah-50 hover:bg-madrasah-100 text-madrasah-800 border-2 border-madrasah-200 font-display font-bold text-xs transition-all shadow-2xs">
+                                <i class="fas fa-up-right-from-square text-madrasah-600"></i>
+                                <span>Buka Game Layar Penuh</span>
+                            </a>
+                        </div>
+
+                        <div class="relative w-full h-[520px] sm:h-[620px] rounded-3xl overflow-hidden border-2 border-amber-300 bg-white shadow-lg">
+                            <iframe src="https://arieskasim19-cloud.github.io/Pecahan-Pecah-Balon/" 
+                                    class="w-full h-full border-0" 
+                                    allow="autoplay; fullscreen"
+                                    title="Game Pecah Balon Pecahan">
+                            </iframe>
+                        </div>
+
+                        <p class="text-xs text-slate-500 text-center">
+                            <i class="fas fa-info-circle text-madrasah-600 mr-1"></i>
+                            Mainkan game interaktif di atas langsung dari perangkatmu untuk menguji pemahaman tentang pecahan dan desimal.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Jika bab aktif adalah Rasio, tampilkan game Kancil dan Buaya
+            if (topic.id === 'rasio') {
+                contentAreaEl.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-madrasah-100 pb-4">
+                            <div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-1">
+                                    <i class="fas fa-star text-amber-500"></i> GAME EDUKATIF &bull; RASIO (PERBANDINGAN)
+                                </span>
+                                <h2 class="font-display text-2xl font-bold text-madrasah-950">Game Kancil dan Buaya</h2>
+                            </div>
+                            <a href="https://arieskasim19-cloud.github.io/Kancil-dan-Buaya/" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-madrasah-50 hover:bg-madrasah-100 text-madrasah-800 border-2 border-madrasah-200 font-display font-bold text-xs transition-all shadow-2xs">
+                                <i class="fas fa-up-right-from-square text-madrasah-600"></i>
+                                <span>Buka Game Layar Penuh</span>
+                            </a>
+                        </div>
+
+                        <div class="relative w-full h-[520px] sm:h-[620px] rounded-3xl overflow-hidden border-2 border-amber-300 bg-white shadow-lg">
+                            <iframe src="https://arieskasim19-cloud.github.io/Kancil-dan-Buaya/" 
+                                    class="w-full h-full border-0" 
+                                    allow="autoplay; fullscreen"
+                                    title="Game Kancil dan Buaya">
+                            </iframe>
+                        </div>
+
+                        <p class="text-xs text-slate-500 text-center">
+                            <i class="fas fa-info-circle text-madrasah-600 mr-1"></i>
+                            Mainkan game interaktif di atas langsung dari perangkatmu untuk menguji pemahaman tentang rasio dan perbandingan.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            contentAreaEl.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-madrasah-100 pb-4">
+                        <div>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold mb-1">
+                                <i class="fas fa-star text-amber-500"></i> GAME EDUKATIF &bull; ${topic.title.toUpperCase()}
+                            </span>
+                            <h2 class="font-display text-2xl font-bold text-madrasah-950">Tantangan Cepat Matematika</h2>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <div class="bg-gradient-to-b from-madrasah-50 to-madrasah-100 border-2 border-madrasah-300 px-4 py-2 rounded-2xl text-center shadow-2xs">
+                                <span class="block text-[10px] font-bold text-madrasah-700 uppercase">Skor Kamu</span>
+                                <span class="font-display text-xl font-bold text-madrasah-900">${state.gameScore}</span>
+                            </div>
+                            <div class="bg-gradient-to-b from-amber-50 to-yellow-100 border-2 border-amber-300 px-4 py-2 rounded-2xl text-center shadow-2xs">
+                                <span class="block text-[10px] font-bold text-amber-700 uppercase">Beruntun</span>
+                                <span class="font-display text-xl font-bold text-amber-600"><i class="fas fa-fire"></i> ${state.gameStreak}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-madrasah-700 via-madrasah-600 to-emerald-600 text-white rounded-[2rem] p-6 sm:p-8 text-center shadow-xl border-2 border-amber-300 relative overflow-hidden">
+                        <p class="text-madrasah-100 font-semibold text-sm sm:text-base mb-3">${gq.prompt}</p>
+                        <div class="inline-block bg-white/15 backdrop-blur-md border-2 border-amber-300/80 px-8 py-4 rounded-3xl mb-6 shadow-inner">
+                            <span class="font-display text-3xl sm:text-4xl font-bold tracking-wider text-yellow-300 drop-shadow-xs">${gq.highlight}</span>
+                        </div>
+                        <div id="game-feedback" class="h-8 mb-3 font-display font-bold text-base sm:text-lg"></div>
+                        <div class="grid grid-cols-2 gap-3.5 max-w-md mx-auto relative z-10">
+                            ${gq.options.map(opt => `
+                                <button onclick="checkGameAnswer('${opt}')" class="bg-white hover:bg-amber-50 text-madrasah-950 font-display font-bold text-lg py-4 px-4 rounded-2xl shadow-[0_5px_0_#d1fae5] active:translate-y-1 active:shadow-none border-2 border-amber-200 transition-all cursor-pointer">
+                                    ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.checkGameAnswer = function(selected) {
+            const gq = state.currentGameQuestion;
+            const feedbackEl = document.getElementById('game-feedback');
+            if (selected === gq.answer) {
+                soundFX.playCorrect();
+                state.gameScore += 10;
+                state.gameStreak += 1;
+                feedbackEl.innerHTML = `<span class="text-yellow-300"><i class="fas fa-check-circle mr-1"></i> MasyaAllah Benar! +10 Poin</span>`;
+            } else {
+                soundFX.playWrong();
+                state.gameStreak = 0;
+                feedbackEl.innerHTML = `<span class="text-red-200"><i class="fas fa-times-circle mr-1"></i> Kurang tepat! Jawabannya ${gq.answer}</span>`;
+            }
+            setTimeout(() => {
+                generateGameQuestion();
+                renderGameView(learningData[state.activeTopic]);
+            }, 950);
+        };
+
+        // --- 10. TAMPILAN & LOGIKA LATIHAN SOAL (PILIHAN GANDA, KOMPLEKS, & ISIAN) ---
+        function isQuestionCorrect(item, userChoice) {
+            const qType = item.type || 'single';
+            if (qType === 'single') {
+                return userChoice === item.ans;
+            } else if (qType === 'multiple') {
+                if (!Array.isArray(userChoice) || userChoice.length !== item.ans.length) return false;
+                const sortedUser = [...userChoice].sort();
+                const sortedAns = [...item.ans].sort();
+                return sortedUser.every((val, index) => val === sortedAns[index]);
+            } else if (qType === 'short') {
+                if (typeof userChoice !== 'string') return false;
+                const cleanUser = userChoice.trim().toLowerCase().replace(/\s+/g, ' ');
+                return item.acceptedAnswers.some(ans => ans.toLowerCase() === cleanUser);
+            }
+            return false;
+        }
+
+        function renderQuizView(topic) {
+            const questions = topic.quiz;
+            let correctCount = 0;
+            if (state.quizSubmitted) {
+                questions.forEach((item, qIdx) => {
+                    if (isQuestionCorrect(item, state.quizAnswers[qIdx])) {
+                        correctCount++;
+                    }
+                });
+            }
+            const score = Math.round((correctCount / questions.length) * 100);
+
+            contentAreaEl.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-madrasah-100 pb-4">
+                        <div>
+                            <span class="inline-block px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-1">EVALUASI &bull; ${topic.title.toUpperCase()}</span>
+                            <h2 class="font-display text-2xl font-bold text-madrasah-900">Latihan Soal Mandiri</h2>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-slate-500">${questions.length} Soal Latihan</span>
+                    </div>
+
+                    ${state.quizSubmitted ? `
+                        <div class="bg-gradient-to-r from-madrasah-600 to-madrasah-700 text-white p-6 rounded-3xl shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div>
+                                <p class="text-madrasah-100 text-sm font-medium">Hasil Latihan <strong>${state.studentName}</strong> (${state.studentClass}):</p>
+                                <h3 class="font-display text-2xl sm:text-3xl font-bold mt-1">
+                                    Nilai Kamu: <span class="text-yellow-300">${score} / 100</span>
+                                </h3>
+                                <p class="text-xs sm:text-sm text-madrasah-100 mt-1">
+                                    Benar ${correctCount} dari ${questions.length} soal. ${score >= 80 ? 'MasyaAllah, Mumtaz! Pertahankan prestasimu!' : 'Terus berlatih ya, kamu pasti bisa lebih baik!'}
+                                </p>
+                                <div class="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold ${
+                                    state.backupStatus === 'saved' ? 'bg-emerald-800/70 text-emerald-200 border border-emerald-400/40' :
+                                    state.backupStatus === 'saving' ? 'bg-amber-600/70 text-amber-100 border border-amber-300/40' :
+                                    state.backupStatus === 'error' ? 'bg-red-800/70 text-red-200 border border-red-400/40' :
+                                    'bg-white/10 text-madrasah-100'
+                                }">
+                                    ${
+                                        state.backupStatus === 'saved' ? '<i class="fas fa-cloud-check text-yellow-300"></i> Nilai & jawaban berhasil dicadangkan ke Spreadsheet Guru' :
+                                        state.backupStatus === 'saving' ? '<i class="fas fa-spinner fa-spin"></i> Sedang mencadangkan hasil ke database...' :
+                                        state.backupStatus === 'error' ? '<i class="fas fa-exclamation-triangle"></i> Gagal mengirim ke database (Periksa koneksi / URL Script)' :
+                                        '<i class="fas fa-database"></i> Mode Latihan Mandiri'
+                                    }
+                                </div>
+                            </div>
+                            <button onclick="resetQuiz()" class="bg-white text-madrasah-800 hover:bg-madrasah-50 font-display font-bold px-5 py-3 rounded-2xl shadow transition-all cursor-pointer shrink-0">
+                                <i class="fas fa-rotate-right mr-1.5"></i>Ulangi Latihan
+                            </button>
+                        </div>
+                    ` : ''}
+
+                    <div id="quiz-warning" class="hidden p-3.5 rounded-xl bg-amber-50 border-l-4 border-amber-500 text-amber-800 text-sm font-medium">
+                        <i class="fas fa-info-circle mr-1.5"></i>Silakan jawab semua soal (1 sampai ${questions.length}) terlebih dahulu sebelum mengirim jawaban!
+                    </div>
+
+                    <div class="space-y-5">
+                        ${questions.map((item, qIdx) => {
+                            const qType = item.type || 'single';
+                            const userChoice = state.quizAnswers[qIdx];
+                            const isCorrect = state.quizSubmitted ? isQuestionCorrect(item, userChoice) : false;
+
+                            // Badge jenis soal
+                            let typeBadge = '';
+                            if (qType === 'multiple') {
+                                typeBadge = `<span class="inline-block ml-2 px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[11px] font-bold align-middle">Pilihan Ganda Kompleks</span>`;
+                            } else if (qType === 'short') {
+                                typeBadge = `<span class="inline-block ml-2 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold align-middle">Isian Singkat</span>`;
+                            } else {
+                                typeBadge = `<span class="inline-block ml-2 px-2.5 py-0.5 rounded-full bg-madrasah-100 text-madrasah-800 text-[11px] font-bold align-middle">Pilihan Ganda</span>`;
+                            }
+
+                            let inputAreaHTML = '';
+                            if (qType === 'single') {
+                                inputAreaHTML = `
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                        ${item.options.map((opt, oIdx) => {
+                                            let btnClass = 'bg-white border-slate-200 hover:border-madrasah-400 text-slate-700';
+                                            if (!state.quizSubmitted && userChoice === oIdx) {
+                                                btnClass = 'bg-madrasah-600 border-madrasah-600 text-white font-semibold shadow-sm';
+                                            } else if (state.quizSubmitted) {
+                                                if (oIdx === item.ans) {
+                                                    btnClass = 'bg-madrasah-600 border-madrasah-600 text-white font-bold';
+                                                } else if (userChoice === oIdx && userChoice !== item.ans) {
+                                                    btnClass = 'bg-red-500 border-red-500 text-white';
+                                                } else {
+                                                    btnClass = 'bg-white border-slate-200 text-slate-400';
+                                                }
+                                            }
+                                            return `
+                                                <button onclick="selectQuizOption(${qIdx}, ${oIdx})" 
+                                                        ${state.quizSubmitted ? 'disabled' : ''}
+                                                        class="text-left px-4 py-3 rounded-xl border-2 text-sm transition-all flex items-center gap-2.5 cursor-pointer ${btnClass}">
+                                                    <span class="font-bold">${String.fromCharCode(65 + oIdx)}.</span>
+                                                    <span>${opt}</span>
+                                                </button>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                `;
+                            } else if (qType === 'multiple') {
+                                const selectedArr = Array.isArray(userChoice) ? userChoice : [];
+                                inputAreaHTML = `
+                                    <div class="grid grid-cols-1 gap-2.5">
+                                        ${item.options.map((opt, oIdx) => {
+                                            const isChecked = selectedArr.includes(oIdx);
+                                            const isAns = item.ans.includes(oIdx);
+                                            let btnClass = 'bg-white border-slate-200 hover:border-purple-400 text-slate-700';
+                                            let iconHtml = `<i class="far fa-square text-base text-slate-400"></i>`;
+
+                                            if (!state.quizSubmitted && isChecked) {
+                                                btnClass = 'bg-purple-600 border-purple-600 text-white font-semibold shadow-sm';
+                                                iconHtml = `<i class="fas fa-check-square text-base text-white"></i>`;
+                                            } else if (state.quizSubmitted) {
+                                                if (isAns) {
+                                                    btnClass = 'bg-madrasah-600 border-madrasah-600 text-white font-bold';
+                                                    iconHtml = `<i class="fas fa-check-square text-base text-yellow-300"></i>`;
+                                                } else if (isChecked && !isAns) {
+                                                    btnClass = 'bg-red-500 border-red-500 text-white';
+                                                    iconHtml = `<i class="fas fa-times-circle text-base text-white"></i>`;
+                                                } else {
+                                                    btnClass = 'bg-white border-slate-200 text-slate-400';
+                                                }
+                                            }
+                                            return `
+                                                <button onclick="toggleMultiOption(${qIdx}, ${oIdx})" 
+                                                        ${state.quizSubmitted ? 'disabled' : ''}
+                                                        class="text-left px-4 py-3 rounded-xl border-2 text-sm transition-all flex items-start gap-3 cursor-pointer ${btnClass}">
+                                                    <span class="mt-0.5 shrink-0">${iconHtml}</span>
+                                                    <span>${opt}</span>
+                                                </button>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                `;
+                            } else if (qType === 'short') {
+                                const valStr = typeof userChoice === 'string' ? userChoice : '';
+                                inputAreaHTML = `
+                                    <div class="space-y-2">
+                                        <input type="text" 
+                                               value="${valStr.replace(/"/g, '&quot;')}"
+                                               oninput="updateShortAnswer(${qIdx}, this.value)"
+                                               placeholder="${item.placeholder || 'Ketik jawabanmu di sini...'}"
+                                               ${state.quizSubmitted ? 'disabled' : ''}
+                                               class="w-full px-4 py-3 rounded-xl border-2 text-sm font-semibold transition-all focus:outline-none ${
+                                                   state.quizSubmitted 
+                                                   ? (isCorrect ? 'border-madrasah-500 bg-madrasah-50 text-madrasah-900' : 'border-red-400 bg-red-50 text-red-900')
+                                                   : 'border-slate-300 bg-white focus:border-madrasah-500 text-slate-800'
+                                               }">
+                                        ${state.quizSubmitted ? `
+                                            <p class="text-xs font-bold ${isCorrect ? 'text-madrasah-700' : 'text-red-600'}">
+                                                <i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'} mr-1"></i>
+                                                Kunci Jawaban: ${item.displayAnswer}
+                                            </p>
+                                        ` : ''}
+                                    </div>
+                                `;
+                            }
+
+                            return `
+                                <div class="p-5 rounded-2xl border-2 ${state.quizSubmitted ? (isCorrect ? 'border-madrasah-400 bg-madrasah-50/40' : 'border-red-300 bg-red-50/30') : 'border-slate-200 bg-slate-50/50'}">
+                                    <p class="font-bold text-slate-800 mb-3 text-sm sm:text-base leading-relaxed">
+                                        <span class="inline-block w-7 h-7 rounded-lg bg-madrasah-600 text-white text-center leading-7 text-xs mr-2">${qIdx + 1}</span>
+                                        ${item.q}
+                                        ${typeBadge}
+                                    </p>
+                                    ${inputAreaHTML}
+                                    ${state.quizSubmitted ? `
+                                        <div class="mt-3 p-3 rounded-xl bg-white border border-madrasah-200 text-xs text-slate-700">
+                                            <strong class="text-madrasah-800"><i class="fas fa-book-open mr-1"></i>Pembahasan:</strong> ${item.exp}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    ${!state.quizSubmitted ? `
+                        <div class="pt-2 flex justify-end">
+                            <button onclick="submitQuiz()" class="btn-3d-green w-full sm:w-auto bg-gradient-to-r from-madrasah-600 to-emerald-500 text-white font-display font-bold text-base px-8 py-4 rounded-2xl border-2 border-amber-300/80 cursor-pointer">
+                                <i class="fas fa-check-double mr-2 text-amber-300"></i>Kirim Jawaban
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        window.selectQuizOption = function(qIdx, oIdx) {
+            if (state.quizSubmitted) return;
+            soundFX.playClick();
+            state.quizAnswers[qIdx] = oIdx;
+            document.getElementById('quiz-warning')?.classList.add('hidden');
+            renderQuizView(learningData[state.activeTopic]);
+        };
+
+        window.toggleMultiOption = function(qIdx, oIdx) {
+            if (state.quizSubmitted) return;
+            soundFX.playClick();
+            const current = Array.isArray(state.quizAnswers[qIdx]) ? [...state.quizAnswers[qIdx]] : [];
+            const pos = current.indexOf(oIdx);
+            if (pos === -1) {
+                current.push(oIdx);
+            } else {
+                current.splice(pos, 1);
+            }
+            if (current.length === 0) {
+                delete state.quizAnswers[qIdx];
+            } else {
+                state.quizAnswers[qIdx] = current;
+            }
+            document.getElementById('quiz-warning')?.classList.add('hidden');
+            renderQuizView(learningData[state.activeTopic]);
+        };
+
+        window.updateShortAnswer = function(qIdx, val) {
+            if (state.quizSubmitted) return;
+            if (val.trim() === '') {
+                delete state.quizAnswers[qIdx];
+            } else {
+                state.quizAnswers[qIdx] = val;
+            }
+            document.getElementById('quiz-warning')?.classList.add('hidden');
+        };
+
+        window.submitQuiz = function() {
+            const topicKey = state.activeTopic;
+            const topicObj = learningData[topicKey];
+            const questions = topicObj.quiz;
+            const allAnswered = questions.every((item, idx) => {
+                const ans = state.quizAnswers[idx];
+                const qType = item.type || 'single';
+                if (qType === 'single') return typeof ans === 'number';
+                if (qType === 'multiple') return Array.isArray(ans) && ans.length > 0;
+                if (qType === 'short') return typeof ans === 'string' && ans.trim().length > 0;
+                return false;
+            });
+
+            if (!allAnswered) {
+                soundFX.playWrong();
+                document.getElementById('quiz-warning').classList.remove('hidden');
+                return;
+            }
+
+            // Hitung Skor & Siapkan Format Jawaban Rapi untuk Spreadsheet
+            let correctCount = 0;
+            const formattedAnswers = questions.map((item, idx) => {
+                const userAns = state.quizAnswers[idx];
+                const isCorrect = isQuestionCorrect(item, userAns);
+                if (isCorrect) correctCount++;
+
+                const qType = item.type || 'single';
+                let readableAns = '-';
+                if (qType === 'single' && typeof userAns === 'number') {
+                    readableAns = `${String.fromCharCode(65 + userAns)} (${item.options[userAns]})`;
+                } else if (qType === 'multiple' && Array.isArray(userAns)) {
+                    readableAns = [...userAns].sort().map(i => String.fromCharCode(65 + i)).join(', ');
+                } else if (qType === 'short' && typeof userAns === 'string') {
+                    readableAns = userAns.trim();
+                }
+
+                return `${readableAns} [${isCorrect ? 'Benar' : 'Salah'}]`;
+            });
+            const score = Math.round((correctCount / questions.length) * 100);
+
+            soundFX.playCorrect();
+            state.quizSubmitted = true;
+
+            // KIRIM DATA KE GOOGLE APPS SCRIPT (DATABASE SPREADSHEET)
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxcv4ugT0EE6p9D_7qrPBDZ-pCIeFqzg1i9NlcFJa5EfdKzi2rg3HBRacqAgf2oc8wo/exec";
+
+            if (scriptURL !== "MASUKKAN_URL_WEB_APP_APPS_SCRIPT_ANDA_DI_SINI" && scriptURL.startsWith("http")) {
+                state.backupStatus = 'saving';
+                renderQuizView(topicObj);
+                contentAreaEl.scrollIntoView({ behavior: 'smooth' });
+
+                const payload = {
+                    studentName: state.studentName,
+                    studentClass: state.studentClass,
+                    topic: topicKey,
+                    topicTitle: topicObj.title,
+                    score: score,
+                    correctCount: correctCount,
+                    totalQuestions: questions.length,
+                    formattedAnswers: formattedAnswers,
+                    rawAnswers: state.quizAnswers
+                };
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                })
+                .then(() => {
+                    state.backupStatus = 'saved';
+                    if (state.activeTab === 'latihan' && state.quizSubmitted) {
+                        renderQuizView(topicObj);
+                    }
+                })
+                .catch(err => {
+                    console.error("Gagal mengirim data ke spreadsheet:", err);
+                    state.backupStatus = 'error';
+                    if (state.activeTab === 'latihan' && state.quizSubmitted) {
+                        renderQuizView(topicObj);
+                    }
+                });
+            } else {
+                state.backupStatus = 'idle';
+                renderQuizView(topicObj);
+                contentAreaEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        window.resetQuiz = function() {
+            soundFX.playClick();
+            state.quizAnswers = {};
+            state.quizSubmitted = false;
+            state.backupStatus = 'idle';
+            renderQuizView(learningData[state.activeTopic]);
+        };
+
+        // --- 11. LOGIKA VIDEO PEMBELAJARAN BAB 1 (YOUTUBE) ---
+        const bab1Videos = [
+            {
+                title: "Perkalian pecahan dengan bilangan asli",
+                videoId: "drfKdwSQPv4",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=drfKdwSQPv4"
+            },
+            {
+                title: "Pembagian pecahan dengan bilangan asli",
+                videoId: "jIzpIse7iyU",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=jIzpIse7iyU"
+            },
+            {
+                title: "Mengubah pecahan menjadi bilangan desimal",
+                videoId: "Xpx9soyaA9w",
+                embedParams: "autoplay=1&rel=0&start=6",
+                url: "https://www.youtube.com/watch?v=Xpx9soyaA9w&t=6s"
+            }
+        ];
+
+        window.toggleBab1VideoPanel = function() {
+            soundFX.playClick();
+            const panel = document.getElementById('bab1-video-panel');
+            const chevron = document.getElementById('bab1-video-chevron');
+            if (!panel) return;
+
+            const isHidden = panel.classList.contains('hidden');
+            if (isHidden) {
+                panel.classList.remove('hidden');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            } else {
+                panel.classList.add('hidden');
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+                closeBab1VideoPlayer();
+            }
+        };
+
+        window.closeBab1VideoPlayer = function() {
+            const container = document.getElementById('bab1-iframe-container');
+            if (container) container.innerHTML = '';
+            document.getElementById('bab1-video-player-box')?.classList.add('hidden');
+            document.querySelectorAll('.bab1-vid-btn').forEach((btn) => {
+                btn.classList.add('bg-white', 'border-red-200');
+                btn.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-200');
+            });
+        };
+
+        window.playBab1Video = function(index) {
+            soundFX.playClick();
+            const video = bab1Videos[index];
+            if (!video) return;
+
+            // Perbarui gaya tombol aktif
+            document.querySelectorAll('.bab1-vid-btn').forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.remove('bg-white', 'border-red-200');
+                    btn.classList.add('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-200');
+                } else {
+                    btn.classList.add('bg-white', 'border-red-200');
+                    btn.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-200');
+                }
+            });
+
+            const playerBox = document.getElementById('bab1-video-player-box');
+            const container = document.getElementById('bab1-iframe-container');
+            const titleEl = document.getElementById('bab1-active-video-title');
+            const linkEl = document.getElementById('bab1-active-video-link');
+
+            if (playerBox && container && titleEl && linkEl) {
+                playerBox.classList.remove('hidden');
+                titleEl.innerHTML = `<i class="fab fa-youtube text-red-600 text-lg"></i> <span>${video.title}</span>`;
+                linkEl.href = video.url;
+
+                // Render ulang iframe dengan youtube-nocookie & referrerpolicy agar dapat diputar di dalam aplikasi
+                const embedUrl = `https://www.youtube-nocookie.com/embed/${video.videoId}?${video.embedParams}&playsinline=1`;
+                container.innerHTML = `
+                    <iframe 
+                        src="${embedUrl}" 
+                        class="w-full h-full border-0" 
+                        title="${video.title}"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+                playerBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        };
+
+        // --- 12. LOGIKA VIDEO PEMBELAJARAN BAB 2 (YOUTUBE) ---
+        const bab2Videos = [
+            {
+                title: "Konsep Rasio",
+                videoId: "ju6K5iyvsAs",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=ju6K5iyvsAs"
+            },
+            {
+                title: "Konsep Kesamaan Rasio",
+                videoId: "tTGAFTF9NBs",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=tTGAFTF9NBs"
+            },
+            {
+                title: "Rasio Satuan",
+                videoId: "O-ZEIQKj8Ss",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=O-ZEIQKj8Ss"
+            },
+            {
+                title: "Rasio Bagian Terhadap Bagian dan Rasio Bagian Terhadap Keseluruhan",
+                videoId: "oYkMNBPEqcg",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=oYkMNBPEqcg"
+            },
+            {
+                title: "Rasio Terhadap Durasi Waktu",
+                videoId: "iB5rQxj7x9M",
+                embedParams: "autoplay=1&rel=0",
+                url: "https://www.youtube.com/watch?v=iB5rQxj7x9M"
+            }
+        ];
+
+        window.toggleBab2VideoPanel = function() {
+            soundFX.playClick();
+            const panel = document.getElementById('bab2-video-panel');
+            const chevron = document.getElementById('bab2-video-chevron');
+            if (!panel) return;
+
+            const isHidden = panel.classList.contains('hidden');
+            if (isHidden) {
+                panel.classList.remove('hidden');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            } else {
+                panel.classList.add('hidden');
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+                closeBab2VideoPlayer();
+            }
+        };
+
+        window.closeBab2VideoPlayer = function() {
+            const container = document.getElementById('bab2-iframe-container');
+            if (container) container.innerHTML = '';
+            document.getElementById('bab2-video-player-box')?.classList.add('hidden');
+            document.querySelectorAll('.bab2-vid-btn').forEach((btn) => {
+                btn.classList.add('bg-white', 'border-red-200');
+                btn.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-200');
+            });
+        };
+
+        window.playBab2Video = function(index) {
+            soundFX.playClick();
+            const video = bab2Videos[index];
+            if (!video) return;
+
+            // Perbarui gaya tombol aktif
+            document.querySelectorAll('.bab2-vid-btn').forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.remove('bg-white', 'border-red-200');
+                    btn.classList.add('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-200');
+                } else {
+                    btn.classList.add('bg-white', 'border-red-200');
+                    btn.classList.remove('bg-red-50', 'border-red-500', 'ring-2', 'ring-red-200');
+                }
+            });
+
+            const playerBox = document.getElementById('bab2-video-player-box');
+            const container = document.getElementById('bab2-iframe-container');
+            const titleEl = document.getElementById('bab2-active-video-title');
+            const linkEl = document.getElementById('bab2-active-video-link');
+
+            if (playerBox && container && titleEl && linkEl) {
+                playerBox.classList.remove('hidden');
+                titleEl.innerHTML = `<i class="fab fa-youtube text-red-600 text-lg"></i> <span>${video.title}</span>`;
+                linkEl.href = video.url;
+
+                // Render ulang iframe dengan youtube-nocookie & referrerpolicy agar dapat diputar di dalam aplikasi
+                const embedUrl = `https://www.youtube-nocookie.com/embed/${video.videoId}?${video.embedParams}&playsinline=1`;
+                container.innerHTML = `
+                    <iframe 
+                        src="${embedUrl}" 
+                        class="w-full h-full border-0" 
+                        title="${video.title}"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                `;
+                playerBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        };
+    </script>
+</body>
+</html>
